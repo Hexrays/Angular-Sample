@@ -1,0 +1,133 @@
+
+.cat-nav__sidebar {
+  position                   : fixed;
+  z-index                    : 100;
+  top                        : 0;
+  bottom                     : 0;
+  left                       : 0;
+  overflow-x                 : hidden;
+  overflow-y                 : auto;
+  width                      : $sidebarWidth;
+  padding                    : 0;
+  transition                 : all 0.25s ease-in-out;
+  text-transform             : uppercase;
+  background-color           : $sidebarNavColor;
+  box-shadow                 : 3px -3px 5px -2px rgba(0, 0, 0, 0.35);
+  -webkit-overflow-scrolling : touch;
+
+  max-height: none;
+
+  .is-ie9 & {
+    width: $sidebarWidth + 18;
+  }
+
+  .is-ie9.hide-sidebar & {
+    transform  : translate(-270px,0);
+  }
+
+  .hide-sidebar & {
+    transform : translate3d(-270px, 0, 0);
+  }
+
+  @include breakpoint(tb) {
+    width      : 100%;
+    max-height : 35px;
+    transition : all 0.4s ease-in-out;
+    transform  : translate3d(0, 0, 0);
+
+    .is-ie9 & {
+      left: 0;
+    }
+
+    .hide-sidebar.is-ie9 & {
+      transform  : translate(0,0);
+    }
+
+    .hide-sidebar & {
+      max-height: 50em;
+      transform : translate3d(0, 0, 0);
+
+
+    }
+  }
+
+  @include breakpoint(sm){
+    max-height: 30px;
+  }
+}
+
+.cat-nav__back {
+  color : #000;
+
+  &:hover {
+    text-decoration : none;
+    color           : silver;
+  }
+}
+
+.cat-nav__label {
+  height           : 150px;
+  padding-top      : 55px;
+  padding-left     : 12px;
+  color            : #fff;
+  background-color : $mainSiteColor;
+  text-shadow      : 2px 1px 0px rgba(68, 68, 68, 1);
+  font-family      : $evtechFont;
+  font-size        : 32px;
+  font-weight      : lighter;
+  line-height      : 0.8;
+
+  @include breakpoint(tb){
+    display: none;
+  }
+}
+
+.cat-nav__tech {
+  color : $sidebarNavColor;
+}
+
+.cat-nav__awards {
+  position  : relative;
+  top       : -6px;
+  left      : 118px;
+  font-size : 22px;
+}
+
+.cat-nav__container {
+  overflow   : hidden;
+  transition : all 0.4s ease-in-out;
+
+  @include breakpoint(tb){
+    margin-top: 35px;
+  }
+
+  @include breakpoint(sm) {
+    margin-top: 30px;
+  }
+}
+
+.cat-nav__categories {
+  margin : 0;
+}
+
+.cat-nav__item {
+  padding                : 12px;
+  cursor                 : pointer;
+  transition             : all 0.25s;
+  color                  : #fff;
+  border-top             : 1px solid gray;
+  font-weight            : bold;
+  line-height            : 1.2;
+  -webkit-font-smoothing : antialiased;
+
+  &:hover, &.active {
+    background-color : $mainSiteColor;
+  }
+}
+
+.cat-nav__search-input {
+  display : none;
+  .category-search & {
+    display : block;
+  }
+}

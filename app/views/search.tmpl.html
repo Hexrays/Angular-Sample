@@ -1,0 +1,29 @@
+<div class="search" ng-if="search.showSearch">
+  <div class="search__container">
+
+    <div class="search__box">
+      <i class="fa fa-search"></i><input class="search__search-input" type="text" ng-model="search.searchBy" focus="{{category.showSearch}}" placeholder="Type to search">
+      <div ng-click="searchCtrl.onBackBtnClick()" class="search__back pull-right"><i class="fa fa-times"></i></div>
+    </div>
+
+    <ul class="list-unstyled" ng-show="search.searchBy.length >= 3">
+      <li ng-repeat="result in search.categories" class="search__hide" >
+        <ul class="list-unstyled">
+          <li ng-repeat="award in result.winners | filter: {searchableProps: search.searchBy} " class="search__item col-md-4 col-sm-6">
+            <div class="search__thumbnail">
+              <div class="search__img" bg-image="{{award.photos[0]}}"></div>
+              <h4 class="search__category">{{result.category}}</h4>
+              <div class="search__details">
+                <p class="search__detail search__label">Ex Sample Award <span class="capitalize">{{award.award}}</span></p>
+                <p class="search__detail"><span class="search__label">Client:</span> {{award.client}}</p>
+                <p class="search__detail"><span class="search__label">Campaign:</span> {{award.campaign}}</p>
+                <p class="search__detail"><span class="search__label">Agency:</span> {{award.agency}}</p>
+              </div>
+              <a class="search__case-study" ui-sref="category({category:result.id,award:award.award })" ng-click="searchCtrl.loadPage(result.id, award.award)">Read Case Study</a>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

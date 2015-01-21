@@ -1,0 +1,210 @@
+// Animations
+.award-slide-out-left.ng-leave {
+  position            : absolute;
+  z-index             : 3;
+  transition-duration : 0.5s;
+  transition-property : transform, opacity;
+  transform           : translate(0px, 0px);
+  opacity             : 1;
+}
+
+.award-slide-out-left.ng-leave-active {
+  position  : absolute;
+  transform : translate(-100%, 0px);
+  opacity   : 0;
+}
+
+.award-slide-in-left.ng-enter {
+  position            : absolute;
+  z-index             : 1;
+  transition-duration : 0.5s;
+  transition-property : transform, opacity;
+  transform           : translate(-100%, 0px);
+  opacity             : 0;
+}
+
+.award-slide-in-left.ng-enter-active {
+  position  : absolute;
+  transform : translate(0px, 0px);
+  opacity   : 1;
+}
+
+.at-view-flip-out-vertical.ng-leave {
+  position            : absolute;
+  z-index             : 20;
+  top                 : 0px;
+  left                : 0px;
+  transition-duration : 0.5s;
+  transition-property : transform;
+  transform           : rotateY(0deg);
+  transform-origin    : center center;
+  backface-visibility : hidden;
+}
+
+.at-view-flip-out-vertical.ng-leave-active {
+  z-index   : 10;
+  transform : rotateY(180deg);
+}
+
+.at-view-flip-in-vertical.ng-enter {
+  position            : absolute;
+  z-index             : 10;
+  top                 : 0px;
+  left                : 0px;
+  transition-duration : 0.5s;
+  transition-property : transform;
+  transform           : rotateY(-180deg);
+  transform-origin    : center center;
+  backface-visibility : hidden;
+}
+
+.at-view-flip-in-vertical.ng-enter-active {
+  transform : rotateX(0deg);
+  z-index   : 20;
+}
+
+// class="at-view-flip-in-vertical at-view-flip-out-vertical"
+// category__view-container
+
+.slideshow__image-container.ng-enter {
+  transition : opacity 0.66s ease;
+  opacity    : 0;
+}
+
+.slideshow__image-container.ng-enter-active {
+  opacity : 1;
+}
+
+.slideshow__image-container.ng-leave {
+  transition : opacity 0.66s ease;
+  opacity    : 1;
+}
+
+.slideshow__image-container.ng-leave-active {
+  opacity : 0;
+}
+
+.at-view-fade-in.ng-enter {
+  position   : absolute;
+  top        : 0px;
+  left       : 0px;
+  transition : opacity 0.66s ease, transform 0.45s ease 0.15s;
+  opacity    : 0;
+
+  .category__animation-container {
+    animation : animateFromBottom 0.66s;
+  }
+
+  .cat-nav__sidebar {
+    // animation: sidebar-enter 0.5s ease-in-out 0.15s;
+    // animation: name duration timing-function delay iteration-count direction fill-mode;
+  }
+}
+
+.at-view-fade-in.ng-enter-active {
+  opacity : 1;
+}
+
+.at-view-fade-out.ng-leave {
+  position            : absolute;
+  top                 : 0px;
+  left                : 0px;
+  transition-duration : 0.66s;
+  transition-property : opacity;
+  opacity             : 1;
+
+  .category__animation-container {
+    transition : transform 0.66s ease;
+    transform  : translate3d(0,0,0);
+
+    .is-ie9 & {
+      transform  : translate(0,0);
+    }
+  }
+
+  .cat-nav__sidebar {
+    // animation: sidebar-leave 0.66s;
+  }
+}
+
+.at-view-fade-out.ng-leave-active {
+  opacity : 0;
+
+  .category__animation-container {
+    transform : translate3d(0,100%,0);
+
+    .is-ie9 & {
+      transform  : translate(0,100%);
+    }
+  }
+}
+
+@keyframes sidebar-enter {
+  from {
+    transform : translate3d(-270px, 0, 0);
+    opacity   : 0;
+  }
+  to   {
+    transform : translate3d(0, 0, 0);
+    opacity   : 1;
+  }
+}
+
+@keyframes sidebar-leave {
+  from {
+    transform : translate3d(0, 0 ,0);
+  }
+  to   {
+    transform : translate3d(-270px, 0, 0);
+  }
+}
+
+
+.categories__repeated.ng-enter-stagger {
+  animation-duration : 0;
+  animation-delay    : 0.1s;
+}
+
+.categories__repeated.ng-enter {
+  animation : category_enter_animation 0.33s;
+}
+
+@keyframes category_enter_animation {
+  from {
+    // transform: translate(0,100px);
+    opacity : 0;
+  }
+  to {
+    // transform: translate(0,0);
+    opacity : 1;
+  }
+}
+
+@keyframes animateFromBottom {
+  from {
+    transform : translate3d(0,100%,0);
+  }
+  to {
+    transform : translate3d(0,0,0);
+  }
+}
+
+.search__hide {
+  transition : opacity 0.33s;
+}
+
+.search__hide.ng-hide-remove {
+  opacity : 0;
+}
+
+.search__hide.ng-hide-remove-active {
+  opacity : 1;
+}
+
+.search__hide.ng-hide-add {
+  opacity : 1;
+}
+
+.search__hide.ng-hide-add-active {
+  opacity : 0;
+}

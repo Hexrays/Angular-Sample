@@ -1,0 +1,453 @@
+
+.category__view-container {
+  overflow-x : hidden;
+  height     : 100%;
+}
+
+.category__animation-container {
+  position : absolute;
+  top      : 0;
+  bottom   : 0;
+  height   : 100%;
+}
+
+.category__carousel {
+  position   : relative;
+  height     : 100%;
+  transition : all 0.66666s cubic-bezier(.61,.13,.28,.97);
+
+  &.element-resizing {
+    transition : top 0s ease-in;
+  }
+}
+
+.category__repeated {
+  position            : relative;
+  float               : left;
+  height              : 100%;
+  margin              : 0;
+  padding             : 0;
+  backface-visibility : hidden;
+}
+
+.category__header-container {
+  position    : fixed;
+  z-index     : 1;
+  top         : 50px;
+  right       : 0;
+  left        : 0px;
+  height      : $categoryHeaderHeight;
+  margin-left : $sidebarWidth;
+  transition  : all 0.25s ease-in-out;
+
+  .hide-sidebar & {
+    transform : translate3d($sidebarWidth / -2,0,0);
+  }
+
+  .hide-sidebar.is-ie9 & {
+    transform  : translate($sidebarWidth / -2,0);
+  }
+
+  @include breakpoint(tb){
+    top         : 35px;
+    margin-left : 0;
+
+    .hide-sidebar & {
+      transform : translate3d(0,0,0);
+    }
+
+    .hide-sidebar.is-ie9 & {
+      transform  : translate(0,0);
+    }
+  }
+
+  @include breakpoint(sm) {
+    top: 30px;
+  }
+}
+
+.category__header {
+  width            : $modalWidth;
+  max-width        : $modalMaxWidth;
+  height           : 100%;
+  margin           : 0 auto;
+  padding          : 10px 0;
+  text-align       : center;
+  text-transform   : uppercase;
+  color            : $mainSiteColor;
+  background-color : rgba(0,0,0,0.7);
+  // line-height   : $categoryHeaderHeight;
+
+  &:after {
+    position     : absolute;
+    top          : 100%;
+    left         : 47%;
+    width        : 0;
+    height       : 0;
+    content      : "";
+    border-top   : 20px solid rgba(0,0,0,0.7);
+    border-right : 25px solid transparent;
+    border-left  : 25px solid transparent;
+  }
+
+  @include breakpoint(tb){
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.category__title {
+  width      : 65%;
+  margin     : 0;
+  margin     : 20px auto 0;
+  word-wrap  : break-word;
+  font-style : italic;
+
+  .is-ie9 & {
+    width: 75%;
+  }
+
+  @include breakpoint(md) {
+    width: 75%;
+  }
+
+  @include breakpoint(sm) {
+    width      : 90%;
+    margin-top : 30px;
+    font-size  : 22px;
+  }
+
+  @include breakpoint(xs) {
+    width     : 95%;
+    font-size : 18px;
+  }
+}
+
+.category__body {
+  position    : relative;
+  padding-top : $photovideoPadding;
+  // margin-top  : 30px;
+}
+
+.category__back-btn {
+  position         : relative;
+  z-index          : 1;
+  top              : -10px;
+  float            : right;
+  width            : 30px;
+  height           : 30px;
+  background-color : $mainSiteColor;
+
+  &:hover {
+    color: #666;
+  }
+
+  i {
+    cursor   : pointer;
+  }
+
+  .fa-times {
+    z-index     : 100;
+    color       : #fff;
+    font-size   : 20px;
+    line-height : 30px;
+  }
+}
+
+.nav-buttons {
+  position         : fixed;
+  top              : 50%;
+  margin           : 0 auto;
+  padding          : 5px 15px;
+  transition       : all 0.2s ease-in-out;
+  transform        : translateY(-50%);
+  background-color : $mainSiteColor;
+
+
+  &:hover {
+    i {
+      opacity : 1;
+    }
+  }
+
+  i {
+    color      : #fff;
+    opacity    : 0.75;
+    font-size  : 32px;
+    transition : opacity 0.15s;
+  }
+
+  @include breakpoint(tb){
+    position : absolute;
+    top      : 350px;
+  }
+
+  @include breakpoint(sm) {
+    top: 320px;
+  }
+
+  @include breakpoint(xs) {
+    top: 260px;
+  }
+
+  @include breakpoint(xxs) {
+    top: 220px;
+  }
+}
+
+.nav-button-prev {
+  left      : 0;
+  padding   : 15px 10px 15px 5px;
+  transform : translate3d(250px,-50%,0);
+
+  .is-ie9 & {
+    transform  : translate(250px,-50%);
+  }
+
+  .hide-sidebar.is-ie9 & {
+    transform  : translate(0,-50%);
+  }
+
+  .hide-sidebar & {
+    transform : translate3d(0,-50%,0);
+  }
+
+  @include breakpoint(tb){
+    transform : translate3d(0,-50%,0);
+
+    .is-ie9 & {
+      transform  : translate(0,-50%);
+    }
+  }
+}
+
+.nav-button-next {
+  right   : 0;
+  padding : 15px 5px 15px 10px;
+}
+
+.category__tools {
+  position         : fixed;
+  z-index          : 101;
+  left             : 250px;
+  width            : 72px;
+  height           : 35px;
+  margin-left      : -72px;
+  transition       : all 0.333s ease-in-out;
+  transition-delay : 0.33s;
+
+  @include breakpoint(tb) {
+    left: 147px;
+  }
+
+  @include breakpoint(sm){
+    left   : 137px;
+    width  : 62px;
+    height : 30px;
+  }
+}
+
+.category__icon {
+  float            : left;
+  width            : 35px;
+  height           : 35px;
+  margin-left      : 1px;
+  cursor           : pointer;
+  text-align       : center;
+  color            : $iconGreyColor;
+  background-color : $offWhite;
+  font-size        : 20px;
+  line-height      : 35px;
+  transition       : all 0.333s ease-in-out;
+  transition-delay : 0.33s;
+
+  @include breakpoint(tb){
+    left: 147px;
+  }
+
+  @include breakpoint(sm) {
+    width       : 30px;
+    height      : 30px;
+    line-height : 30px;
+    font-size   : 18px;
+  }
+}
+
+.category__mobile-header-container {
+  position         : fixed;
+  top              : -35px;
+  right            : 0;
+  left             : 148px;
+  height           : 35px;
+  transition       : all 0.333s ease-in-out;
+  transition-delay : 0.33s;
+  color            : $iconGreyColor;
+  background-color : $offWhite;
+  font-family      : $evtechFont;
+
+  @include breakpoint(tb){
+    top : 0;
+  }
+
+  @include breakpoint(sm) {
+    left   : 128px;
+    height : 30px;
+  }
+}
+
+.category__mobile-header {
+  margin         : 0 0 0 10px;
+  text-transform : uppercase;
+  font-size      : 20px;
+  font-weight    : lighter;
+  line-height    : 35px;
+
+  @include breakpoint(sm){
+    margin      : 0 0 0 10px;
+    line-height : 30px;
+  }
+
+  @include breakpoint(xs) {
+    font-size : 16px;
+  }
+
+  @include breakpoint(xxs) {
+    font-size: 12px;
+  }
+}
+
+.category__nav-container {
+  position     : fixed;
+  z-index      : 100;
+  top          : 0;
+  right        : 0;
+  left         : 0;
+  margin-right : 0;
+  margin-left  : $sidebarWidth;
+  transition   : all 0.25s ease-in-out;
+  transform    : translate3d(0,0,0);
+
+  .is-ie9 & {
+    transform  : translate(0,0,0);
+  }
+
+  .hide-sidebar.is-ie9 & {
+    transform  : translate($sidebarWidth / -2,0);
+  }
+
+  .hide-sidebar & {
+    transform : translate3d($sidebarWidth / -2,0,0);
+  }
+
+  @include breakpoint(tb){
+    margin-left: 0;
+
+    .hide-sidebar.is-ie9 & {
+      transform  : translate(0,0);
+    }
+
+    .hide-sidebar & {
+      transform : translate3d(0,0,0);
+    }
+  }
+}
+
+.category__nav-social {
+  position         : absolute;
+  z-index          : 100;
+  top              : 50px;
+  left             : 50%;
+  width            : 175px;
+  height           : 35px;
+  margin           : 0 auto;
+  margin-top       : -17px;
+  transition       : transform 0.33s;
+  transition-delay : 0.33s;
+  transform        : translate3d(-50%, -85px, 0);
+  background-color : $mainSiteColor;
+
+  .is-ie9 & {
+    transform  : translate(-50%, -85px);
+  }
+
+  .category-view.is-ie9 & {
+    transform  : translate(-50%, 0);
+  }
+
+  .category-view & {
+    transform : translate3d(-50%, 0, 0);
+  }
+
+  &:after {
+    position      : absolute;
+    top           : 0;
+    left          : 100%;
+    width         : 0;
+    height        : 0;
+    content       : "";
+    border-top    : 17px solid transparent;
+    border-bottom : 18px solid transparent;
+    border-left   : 16px solid $mainSiteColor;
+
+    .is-ie9 & {
+      left: 99%;
+    }
+  }
+
+  &:before {
+    position      : absolute;
+    left          : -16px;
+    width         : 0;
+    height        : 0;
+    content       : "";
+    border-top    : 17px solid transparent;
+    border-right  : 16px solid $mainSiteColor;
+    border-bottom : 18px solid transparent;
+
+    .is-ltie11 & {
+      left: -15px;
+    }
+  }
+
+  @include breakpoint(tb){
+    background-color: transparent;
+
+    &:after {
+      content       : none;
+      border-top    : none;
+      border-bottom : none;
+      border-left   : none;
+    }
+
+    &:before {
+      content       : none;
+      border-top    : none;
+      border-right  : none;
+      border-bottom : none;
+    }
+  }
+}
+
+.category__social-link {
+  float       : left;
+  width       : 35px;
+  height      : 35px;
+  text-align  : center;
+  color       : #fff;
+  font-size   : 18px;
+  line-height : 35px;
+  transition  : color 0.15s;
+
+  &:visited {
+    color : #fff;
+  }
+
+  &:hover {
+    opacity: 0.75;
+    color : #fff;
+  }
+
+  @include breakpoint(tb){
+    color : #6d6c67;
+  }
+}

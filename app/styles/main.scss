@@ -1,0 +1,151 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+$categoryHeaderHeight : 100px;
+$photovideoPadding    : 56.25%;
+$modalWidth           : 80%;
+$modalMaxWidth        : 800px;
+$sidebarWidth         : 250px;
+$mainSiteColor        : #eac11d;
+$iconGreyColor        : #818488;
+$sidebarNavColor      : #6d6c67;
+$bodyColor            : #d8d9db;
+$offWhite             : #f9f9f9;
+$mainFont             : 'Roboto', Tahoma, Arial, Helvetica, sans-serif;
+$evtechFont           : Helvetica, sans-serif;
+
+$BREAKPOINT-XXSMALL : 400px   !default;
+$BREAKPOINT-XSMALL  : 650px   !default;
+$BREAKPOINT-SMALL   : 767px   !default;
+$BREAKPOINT-MEDIUM  : 991px   !default;
+$BREAKPOINT-LARGE   : 1024px  !default;
+$BREAKPOINT-XLARGE  : 1200px  !default;
+$BREAKPOINT-FULL    : 1320px  !default;
+$BREAKPOINT-TABLET  : 853px   !default;
+
+@mixin breakpoint($point, $minmax:max) {
+  @if $point == xxs {
+    @media only screen and (#{$minmax}-width: $BREAKPOINT-XXSMALL) { @content; }
+  } @else if $point == xs {
+    @media only screen and (#{$minmax}-width: $BREAKPOINT-XSMALL) { @content; }
+  } @else if $point == sm {
+    @media only screen and (#{$minmax}-width: $BREAKPOINT-SMALL)  { @content; }
+  } @else if $point == md {
+    @media only screen and (#{$minmax}-width: $BREAKPOINT-MEDIUM) { @content; }
+  } @else if $point == lg {
+    @media only screen and (#{$minmax}-width: $BREAKPOINT-LARGE)  { @content; }
+  } @else if $point == xl {
+    @media only screen and (#{$minmax}-width: $BREAKPOINT-XLARGE) { @content; }
+  } @else if $point == tb {
+    @media only screen and (#{$minmax}-width: $BREAKPOINT-TABLET) { @content; }
+  } @else {
+    @media only screen and (#{$minmax}-width: $point)             { @content; }
+  }
+}
+
+.browsehappy {
+  position   : fixed;
+  z-index    : 1000;
+  top        : 0;
+  right      : 0;
+  bottom     : 0;
+  left       : 0;
+  padding    : 2em;
+  text-align : center;
+  color      : #000;
+  background : #ccc;
+}
+
+
+html, body {
+  height : 100%;
+  width  : 100%;
+}
+
+body {
+  background-color : $bodyColor;
+  font-family      : $mainFont;
+}
+
+img {
+  max-width: 100%;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+p {
+  font-weight: 300;
+}
+
+a:focus {
+  outline: 5px auto $mainSiteColor;
+}
+
+.ir {
+  overflow    : hidden;
+  white-space : nowrap;
+  text-indent : 102%;
+}
+
+.main__view {
+  position        : absolute;
+  top             : 0;
+  right           : 0;
+  bottom          : 0;
+  left            : 0;
+  overflow-x      : hidden;
+  background      : url('../images/et-bkg.jpg') center top;
+  background-size : cover;
+}
+
+.main__event-marketer-logo {
+  position         : absolute;
+  z-index          : 101;
+  top              : 0;
+  left             : 50%;
+  width            : 75px;
+  height           : 55px;
+  margin-left      : -38px;
+  transition       : left 0.333s ease-in-out;
+  transition-delay : 0.33s;
+  background       : url('../images/event-marketer-logo.png') top center no-repeat;
+  background-size  : contain;
+
+  .category-view & {
+    left : 141px;
+  }
+
+  @include breakpoint(tb){
+
+    .category-view & {
+      left: 38px;
+    }
+  }
+
+  @include breakpoint(sm) {
+    left        : 33px;
+    width       : 65px;
+    margin-left : -33px;
+
+    .category-view & {
+      left : 33px;
+    }
+  }
+}
+
+.site-color {
+  color: $mainSiteColor;
+}
+
+@import "categoryWall";
+@import "categoryView";
+@import "awards";
+@import "slideshow";
+@import "animations";
+@import "video";
+@import "categoryNav";
+@import "search";

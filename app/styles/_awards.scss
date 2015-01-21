@@ -1,0 +1,139 @@
+.award__container {
+  position        : relative;
+  left            : 0;
+  height          : 100%;
+  perspective     : 1500px;
+  transform-style : preserve-3d
+}
+
+.award__repeated {
+  position            : absolute;
+  left                : 0;
+  right               : 0;
+  margin-right        : 0;
+  margin-left         : $sidebarWidth;
+  transition          : all 0.25s ease-in-out;
+  transform           : translate3d(0,0,0);
+  backface-visibility : hidden;
+
+  .hide-sidebar & {
+    transform : translate3d($sidebarWidth / -2,0,0);
+  }
+
+  .hide-sidebar.is-ie9 & {
+    transform  : translate($sidebarWidth / -2,0);
+  }
+
+  @include breakpoint(tb){
+    margin-left: 0;
+
+    .hide-sidebar & {
+      transform : translate3d(0,0,0);
+    }
+
+    .hide-sidebar.is-ie9 & {
+      transform  : translate(0,0);
+    }
+  }
+}
+
+.award__info {
+  margin: 0 0 5px;
+}
+
+.category__modal {
+  width            : $modalWidth;
+  max-width        : $modalMaxWidth;
+  height           : auto;
+  margin           : 150px auto;
+  padding          : 0;
+  transition       : width 0.25s;
+  transform        : translateZ(0);
+  background-color : #fff;
+
+  @include breakpoint(tb) {
+    width      : 100%;
+    max-width  : none;
+    margin-top : 135px;
+  }
+
+  @include breakpoint(sm) {
+    margin-top : 130px;
+  }
+}
+
+.award__body {
+  padding: 10px 20px;
+}
+
+.award__image {
+  width          : 100%;
+  height         : 0;
+  padding-bottom : 56%;
+  border         : 1px solid #000;
+}
+
+.award__title {
+  font-weight : bold;
+  font-style  : italic;
+}
+
+.award__winner-title {
+  text-transform : uppercase;
+  font-weight    : bold;
+}
+
+.award__section-title {
+  margin-top  : 35px;
+  font-size   : 16px;
+  font-weight : bold;
+  font-style  : italic;
+}
+
+.award__thumbnails {
+  float         : right;
+  width         : 50%;
+  max-width     : 300px;
+  margin-top    : 10px;
+  margin-bottom : 10px;
+
+  li {
+    padding : 5px;
+  }
+}
+
+.award__thumbnail {
+  height         : 0;
+  padding-bottom : 100%;
+  cursor         : pointer;
+  border         : 5px solid $mainSiteColor;
+
+  &:hover {
+    .award__thumbnail-mask  {
+      opacity : 0.25;
+    }
+  }
+}
+
+.award__thumbnail-mask {
+  width            : 100%;
+  height           : 0;
+  padding-bottom   : 108%;
+  transition       : opacity 0.2s ease;
+  opacity          : 0;
+  background-color : $mainSiteColor;
+}
+
+.award__thumbnail-label {
+  position         : absolute;
+  bottom           : 25px;
+  left             : 0px;
+  width            : 60px;
+  margin-left      : 5px;
+  padding          : 3px 0;
+  text-align       : center;
+  text-transform   : uppercase;
+  color            : #fff;
+  background-color : $mainSiteColor;
+  font-weight      : bold;
+}

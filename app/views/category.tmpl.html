@@ -1,0 +1,37 @@
+<div class="category__view-container" ng-swipe-right="category.onSwipePrev($event)" ng-swipe-left="category.onSwipeNext($event)">
+
+  <div class="category__tools">
+    <div class="category__icon" ng-click="category.onSearchClick()">
+      <i class="fa fa-search"></i>
+    </div>
+    <div hide-sidebar class="category__icon">
+      <i class="fa fa-bars"></i>
+    </div>
+    <div class="category__mobile-header-container"><h2 class="category__mobile-header">Ex <span class="site-color">Sample</span> Awards</h2></div>
+  </div>
+
+  <category-nav></category-nav>
+
+  <div class="category__header-container">
+    <div class="category__header">
+      <a ui-sref="main" class="category__back-btn" ng-click="category.onClickClose()"><i class="fa fa-times"></i></a>
+
+      <h3 class="category__title no-swipe">{{category.currentCategory}}</h3>
+    </div>
+  </div>
+
+  <div class="category__animation-container">
+    <div card-carousel class="category__carousel">
+      <div class="category__repeated" on-repeat-done="category_done" ng-repeat="awards in category.categories | orderBy: 'index' " >
+        <award></award>
+      </div>
+    </div>
+  </div>
+
+  <div class="category__navigation">
+    <a ng-mouseover="category.onNavBtnHover('prev')" class="nav-buttons nav-button-prev" ng-show="category.prevCategoryId !== undefined" ng-click="category.onNavArrowClickPrev($event)" ui-sref="category({category:category.prevCategoryId})"><i class="fa fa-chevron-left"></i></a>
+    <a ng-mouseover="category.onNavBtnHover('next')" class="nav-buttons nav-button-next" ng-show="category.nextCategoryId !== undefined" ng-click="category.onNavArrowClickNext($event)" ui-sref="category({category:category.nextCategoryId})"><i class="fa fa-chevron-right"></i></a>
+  </div>
+
+  <search haystack="category"></search>
+</div>

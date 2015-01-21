@@ -1,0 +1,8 @@
+<div class="slideshow">
+  <div class="slideshow__image-container" ng-if="isCurrentSlideIndex($index)" ng-repeat="photo in slides" bg-image="{{photo}}">
+    <!-- <div class="slideshow__image" bg-image="{{photo}}"></div> -->
+  </div>
+  <div class="slideshow__dots-container">
+    <div class="slideshow__dots" ng-repeat="photo in slides" ng-if="slides.length > 1" ng-class="{active: isCurrentSlideIndex($index)}" ng-click="onClickSlideshowDot($index)"></div>
+  </div>
+</div>

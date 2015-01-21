@@ -1,0 +1,18 @@
+<div class="container categories">
+  <div class="index__nav">
+    <div class="index__nav-item index__nav-menu"><a ui-sref="category({category:categories.categories[0].id})"><i class="fa fa-bars"></i></a></div>
+    <div class="index__nav-item index__search-icon" ng-click="categories.showSearch = !categories.showSearch"><i class="fa fa-search"></i></div>
+  </div>
+  <div class="row categories__container">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-3 categories__repeated" on-repeat-done="category_wall_done" ng-repeat="category in categories.categories">
+      <a ui-sref="category({category:category.id})" ng-click="categoried.onClickCategory();">
+        <div class="categories__thumbnail" bg-image="{{category.winners[0].photos[0]}}">
+          <div class="caption categories__caption">
+            <h3 class="categories__header">{{category.category}}</h3>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <search haystack="categories"></search>
+</div>

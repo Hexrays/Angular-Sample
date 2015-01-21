@@ -1,0 +1,54 @@
+<div class="award__container">
+  <div class="award__repeated at-view-flip-in-vertical at-view-flip-out-vertical" ng-repeat="winner in awards.winners | filter: { award: awards.filterBy } | filter:{ client: category.search }" >
+    <div class="category__modal">
+      <div class="category__body">
+        <!-- <div class="award__image" ng-style="{{winner.bgImage}}"></div> -->
+        <slideshow ng-if="!winner.video" photos="winner.photos" active="awards.category" current="category.currentCategory"></slideshow>
+
+        <video-banner ng-if="winner.video" video="winner.video" active="awards.category" current="category.currentCategory" poster="winner.poster_frame"></video-banner>
+
+        <div class="award__body">
+          <div class="award__thumbnails">
+            <ul class="list-unstyled">
+              <li class="col-xs-6" ng-repeat="award in category.awards" ng-hide="winner.award === award" ng-click="category.onAwardClick('{{award}}', awards.index)">
+                <div class="award__thumbnail" ng-style="{{awards.winners[$index].bgImage}}">
+                  <div class="award__thumbnail-mask"></div>
+                  <div class="award__thumbnail-label">
+                    {{award}}
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="award__details">
+            <h4 class="award__title no-swipe">Sample Award <span class="capitalize">{{winner.award}}</span></h4>
+
+            <p class="award__info"><span class="award__winner-title no-swipe">Client:</span> {{winner.client}}</p>
+
+            <p class="award__info"><span class="award__winner-title no-swipe">Campaign:</span> {{winner.campaign}}</p>
+
+            <p class="award__info"><span class="award__winner-title no-swipe">Agency:</span> {{winner.agency}}</p>
+          </div>
+
+          <div ng-show="winner.award === 'winner'">
+            <h5 class="award__section-title no-swipe">Why it's a winner.</h5>
+            <p>{{winner.why}}</p>
+            <h5 class="award__section-title no-swipe">Trends In Action</h5>
+            <p>{{winner.trends}}</p>
+            <h5 class="award__section-title no-swipe">The Case Study</h5>
+            <p ng-bind-html="winner.case_study">{{winner.case_study}}</p>
+            <h5 class="award__section-title no-swipe">Results</h5>
+            <p>{{winner.results}}</p>
+          </div>
+
+          <div ng-show="winner.award !== 'winner'">
+            <h5 class="award__section-title no-swipe">The Case Study</h5>
+            <p ng-bind-html="winner.case_study">{{winner.case_study}}</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- <div ui-view ></div> -->
+</div>

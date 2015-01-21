@@ -1,0 +1,13 @@
+<nav class="cat-nav__sidebar">
+  <div class="cat-nav__label">
+    <div>Ex <br><span class="cat-nav__tech">Sample</span><span class="cat-nav__awards"><br>Awards</span></div>
+  </div>
+  <div class="cat-nav__container">
+    <ul class="list-unstyled cat-nav__categories">
+      <li><a ui-sref="search"></a></li>
+      <li class="cat-nav__item" ng-repeat="item in category.categoryNames" ng-class="{active: item.toLowerCase() === category.currentCategory.toLowerCase()}" ng-click="category.onClickCategory($index)">
+        <span >{{item}}</span>
+      </li>
+    </ul>
+  </div>
+</nav>
